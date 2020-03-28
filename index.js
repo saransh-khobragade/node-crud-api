@@ -3,8 +3,14 @@ const express = require('express')
 const app = express()
 const server = require('http').createServer(app);
 
-app.get('/test_get', async (req, res) => {
-    const postId = req.query.id
+const bodyParser = require('body-parser')
+app.use(bodyParser());
+
+
+//basic get api with query string and query params
+app.get('/test_get/:id', async (req, res) => {
+    const postId = req.query.postId
+    const id = req.params.id
     
     request({
         url: 'https://jsonplaceholder.typicode.com/comments',
@@ -23,10 +29,9 @@ app.get('/test_get', async (req, res) => {
     });
 });
 
+
+//basic post api with body
 app.post('/test_post', async (req, res) => {
-    
-    const req_body={}
-    
     request({
         url: 'https://jsonplaceholder.typicode.com/posts',
         headers: {
@@ -34,7 +39,7 @@ app.post('/test_post', async (req, res) => {
         },
         method: 'GET',
         json:true,
-        body:req_body
+        body:req.body
     }, function (err, httpResponse, data) {
         if (err) {
             return res.status(400).json({err})
