@@ -6,6 +6,10 @@ const server = require('http').createServer(app);
 const bodyParser = require('body-parser')
 app.use(bodyParser());
 
+//basic get api with query string and query params
+app.get('/healthcheck', async (req, res) => {
+    return res.status(200).json({"status":"Running"})
+});
 
 //basic get api with query string and query params
 app.get('/test_get/:id', async (req, res) => {
