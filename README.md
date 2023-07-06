@@ -1,7 +1,7 @@
 # Native Nodejs Crud Api
-    * No dependencies to install
-    * Just hit node index.js
-    * 4kb file index.js
+   No dependencies to install
+   Just hit node index.js
+   4kb file index.js
 
 # How to run server
 ```
